@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PandaDesign</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/PandaDesign.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+</head>
+<body>
+
+    <div class="menu-wrapper">
+        <div class="sidebar-header">
+            <div class="sideBar">
+                <div><img src="/images/body.jpg" /></div>
+                <ul>
+                    <li class="selected"><i class="fas fa-home"></i><label>Home</label></li>
+                    <li><i class="fas fa-chart-bar"></i><label>Statistics</label></li>
+                    <li><i class="fas fa-cogs"></i><label>Services</label></li>
+                    <li><i class="fas fa-phone-alt"></i><label>Contact</label></li>
+                    <li><i class="fas fa-user"></i><label>About us</label></li>
+                    <li><i class="fas fa-cog"></i><label>Setting</label></li>
+                </ul> <span class="cross-icon"><i class="fas fa-times"></i></span>
+            </div>
+            <div class="backdrop"></div>
+            <div class="content">
+                <header>
+                    <div class="menu-button" id='desktop'>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <div class="menu-button" id='mobile'>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                    <h1>SearchHere</h1> <img src="/images/body.jpg" />
+                </header>
+                <div class="content-data">
+                    <div class="container">
+                        <main role="main" class="pb-3">
+                            @RenderBody()
+                        </main>
+                    </div>
+
+                    <footer class="border-top footer text-muted">
+                        <div class="container">
+                            &copy; 2024 - PandaDesign - <a asp-area="" asp-controller="Home" asp-action="Privacy" class="text-light">Privacy</a>
+                        </div>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+
+
+
+        <!-- Main content
+        <main class="main-content">
+
+
+
+    </main> -->
+ 
+    <script>
+        $("#mobile").click(function () {
+            $('.sideBar').addClass("showMenu");
+            $('.sideBar').removeClass("widthChange");
+            $('.backdrop').addClass('showBackdrop')
+        });
+        $(".cross-icon").click(function () {
+            $('.sideBar').removeClass("showMenu");
+            $('.backdrop').removeClass('showBackdrop')
+        });
+        $(".backdrop").click(function () {
+            $('.sideBar').removeClass("showMenu");
+            $('.backdrop').removeClass('showBackdrop')
+        });
+        $("#desktop").click(function () {
+            $('li label').toggleClass("hideMenuList");
+            $('.sideBar').toggleClass("widthChange");
+        });
+        $('li').click(function () {
+            $('li').removeClass();
+            $(this).addClass('selected');
+            $('.sideBar').removeClass("showMenu");
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
